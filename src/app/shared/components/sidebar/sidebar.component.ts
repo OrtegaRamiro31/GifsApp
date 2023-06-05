@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { GiftService } from 'src/app/gifts/services/gifts.service';
 
 @Component({
@@ -8,9 +8,15 @@ import { GiftService } from 'src/app/gifts/services/gifts.service';
 })
 export class SidebarComponent {
   // Private giftsService
-  constructor(private giftsServices: GiftService) {}
+  constructor(private giftsService: GiftService) {}
 
-  get tags() {
-    return this.giftsServices.tagsHistory;
+  get tags(): string[] {
+    return this.giftsService.tagsHistory;
+  }
+
+  searchTag(tag: string): void {
+    this.giftsService.searchTag(tag);
+
+    // this.tagButton.nativeElement.textContent = '';
   }
 }
