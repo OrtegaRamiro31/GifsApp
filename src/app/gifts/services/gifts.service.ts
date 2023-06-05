@@ -40,7 +40,6 @@ export class GiftService {
       .get<SearchResponse>(`${this.serviceUrl}/search`, { params })
       .subscribe((resp) => {
         this.giftList = resp.data;
-        console.log({ gitfs: this.giftList });
       });
   }
 }
