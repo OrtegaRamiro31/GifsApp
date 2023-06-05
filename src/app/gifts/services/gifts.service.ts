@@ -1,8 +1,11 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Gift, SearchResponse } from '../interfaces/gifts.interfaces';
 
 @Injectable({ providedIn: 'root' })
 export class GiftService {
+  public giftList: Gift[] = [];
+
   private _tagsHistory: string[] = [];
   private apiKey: string = '';
   private serviceUrl: string = 'https://api.giphy.com/v1/gifs';
@@ -33,8 +36,11 @@ export class GiftService {
       .set('limit', '10')
       .set('q', tag);
 
-    this.http.get(`${this.serviceUrl}/search`, { params }).subscribe((resp) => {
-      console.log(resp);
-    });
+    this.http
+      .get<SearchResponse>(`${this.serviceUrl}/search`, { params })
+      .subscribe((resp) => {
+        this.giftList = resp.data;
+        console.log({ gitfs: this.giftList });
+      });
   }
 }
