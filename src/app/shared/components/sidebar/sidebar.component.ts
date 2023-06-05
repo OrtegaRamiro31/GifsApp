@@ -16,7 +16,5 @@ export class SidebarComponent {
 
   searchTag(tag: string): void {
     this.giftsService.searchTag(tag);
-
-    // this.tagButton.nativeElement.textContent = '';
   }
 }
