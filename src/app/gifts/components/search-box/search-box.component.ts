@@ -1,4 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
+import { GiftService } from '../../services/gifts.service';
 
 @Component({
   selector: 'gifts-search-box',
@@ -16,10 +17,14 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 export class SearchBoxComponent {
   @ViewChild('txtTagInput')
   public tagInput!: ElementRef<HTMLInputElement>;
-  constructor() {}
+
+  constructor(private gifsService: GiftService) {}
 
   searchTag() {
     const newTag = this.tagInput.nativeElement.value;
-    console.log({ newTag });
+
+    this.gifsService.searchTag(newTag);
+
+    this.tagInput.nativeElement.value = '';
   }
 }
