@@ -1,13 +1,14 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Gift, SearchResponse } from '../interfaces/gifts.interfaces';
+import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class GiftService {
   public giftList: Gift[] = [];
 
   private _tagsHistory: string[] = [];
-  private apiKey: string = '';
+  private apiKey: string = environment.API_KEY;
   private serviceUrl: string = 'https://api.giphy.com/v1/gifs';
 
   constructor(private http: HttpClient) {
