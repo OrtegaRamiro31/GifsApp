@@ -4,12 +4,17 @@
 
   <div class="list-group list-reset">
     <!-- <button class="list-group-item list-group-item-action">Valorant</button> -->
-    <button
-      *ngFor="let tag of tags"
-      class="list-group-item list-group-item-action"
-      (click)="searchTag(tag)"
-    >
-      {{ tag | titlecase }}
-    </button>
+    <div class="d-flex justify-content-around" *ngFor="let tag of tags">
+      <button
+        class="list-group-item list-group-item-action"
+        (click)="searchTag(tag)"
+      >
+        <!-- {{ tag | titlecase }} -->
+        {{ tag.length <= 15 ? tag : tag.slice(0, 15) + "..." }}
+      </button>
+      <button class="list-group-item l bg-danger text-white text-center w-25">
+        X
+      </button>
+    </div>
   </div>
 </div>
