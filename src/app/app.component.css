@@ -1,3 +1,9 @@
 #home-page {
-  margin-left: 250px;
+  margin-left: 200px;
+}
+
+@media (min-height: 768px) {
+  #home-page {
+    margin-left: 250px;
+  }
 }
