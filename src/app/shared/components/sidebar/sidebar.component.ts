@@ -17,4 +17,8 @@ export class SidebarComponent {
   searchTag(tag: string): void {
     this.giftsService.searchTag(tag);
   }
+
+  deteleTag(tag: string): void {
+    this.giftsService.deleteSearchTag(tag);
+  }
 }

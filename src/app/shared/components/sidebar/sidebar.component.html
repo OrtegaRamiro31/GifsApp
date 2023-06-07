@@ -9,10 +9,12 @@
         class="list-group-item list-group-item-action"
         (click)="searchTag(tag)"
       >
-        <!-- {{ tag | titlecase }} -->
-        {{ tag.length <= 15 ? tag : tag.slice(0, 15) + "..." }}
+        {{ (tag.length <= 12 ? tag : tag.slice(0, 12) + "...") | titlecase }}
       </button>
-      <button class="list-group-item l bg-danger text-white text-center w-25">
+      <button
+        class="list-group-item list-group-item-action bg-danger text-white text-center w-25"
+        (click)="deteleTag(tag)"
+      >
         X
       </button>
     </div>

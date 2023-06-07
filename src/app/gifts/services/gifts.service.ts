@@ -59,4 +59,16 @@ export class GiftService {
         this.giftList = resp.data;
       });
   }
+
+  public deleteSearchTag(tag: string): void {
+    if (!localStorage.getItem('history')) return;
+    const storedData = localStorage.getItem('history');
+    const tags: string[] = storedData ? JSON.parse(storedData) : [];
+    const newTags: string[] = tags.filter((tagsStored) => tagsStored !== tag);
+    this._tagsHistory = newTags;
+    this.saveLocalStorage();
+
+    // console.log(prueba);
+    // localStorage.removeItem(tag);
+  }
 }
